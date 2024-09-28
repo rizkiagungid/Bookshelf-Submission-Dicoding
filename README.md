@@ -22,42 +22,7 @@ Untuk mempermudah penilaian submission yang dikirim, Anda perlu memahami ketentu
   - `bookItemIsCompleteButton`: Tombol untuk mengubah kondisi buku dari “Belum selesai dibaca” menjadi “Selesai dibaca” atau sebaliknya.
   - `bookItemDeleteButton`: Tombol untuk menghapus buku.
   - `bookItemEditButton`: Tombol untuk mengubah data buku.
-
-
-###Cara Menjalankan Proyek
-Clone repository ini ke dalam komputer Anda
-
-###Buka folder proyek:
-Buka file index.html di browser untuk mulai menggunakan aplikasi.
-
-###Fitur Aplikasi
-Tambah Buku Baru: Form untuk menambahkan buku dengan judul, penulis, tahun, dan status apakah buku sudah selesai dibaca.
-
-Rak Buku Ganda: Buku-buku dikelompokkan dalam dua kategori, yaitu "Belum selesai dibaca" dan "Selesai dibaca".
-
-Pindahkan Antar Rak: Pengguna dapat memindahkan buku dari satu rak ke rak lainnya dengan mudah.
-
-Cari Buku: Fitur pencarian untuk menemukan buku berdasarkan judul.
-
-Edit Informasi Buku: Pengguna dapat mengedit informasi buku yang sudah ditambahkan.
-
-Hapus Buku: Buku dapat dihapus dari rak dengan klik tombol "Hapus".
-
-Penyimpanan localStorage: Data buku disimpan di localStorage sehingga koleksi tetap ada meskipun halaman ditutup.
-
-###Teknologi yang Digunakan
-HTML: Untuk struktur halaman.
-CSS: Untuk styling, termasuk efek transparansi, animasi, dan desain responsif.
-JavaScript: Untuk logika aplikasi, manipulasi DOM, dan pengelolaan penyimpanan menggunakan localStorage.
-Kontribusi
-Kontribusi sangat dihargai! Jika Anda ingin menambahkan fitur baru, memperbaiki bug, atau memperbaiki tampilan, silakan fork repository ini dan buat pull request. Kami akan sangat senang menerima kontribusi Anda.
-
-###Lisensi
-Proyek ini dilisensikan di bawah MIT License.
-
-###Kontak
-Jika ada pertanyaan atau saran, jangan ragu untuk menghubungi kami melalui GitHub Issues.
-
+  
 Agar pengerjaan tugas lebih mudah, Anda dapat mengikuti template buku berikut.
 
 ```html
