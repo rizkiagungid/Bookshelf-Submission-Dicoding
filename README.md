@@ -23,19 +23,6 @@ Untuk mempermudah penilaian submission yang dikirim, Anda perlu memahami ketentu
   - `bookItemDeleteButton`: Tombol untuk menghapus buku.
   - `bookItemEditButton`: Tombol untuk mengubah data buku.
 
-Agar pengerjaan tugas lebih mudah, Anda dapat mengikuti template buku berikut.
-
-```html
-<div data-bookid="{{ ID_buku }}" data-testid="bookItem">
-  <h3 data-testid="bookItemTitle">{{ judul_buku }}</h3>
-  <p data-testid="bookItemAuthor">Penulis: {{ penulis_buku }}</p>
-  <p data-testid="bookItemYear">Tahun: {{ tahun_rilis_buku }}</p>
-  <div>
-    <button data-testid="bookItemIsCompleteButton">{{ tombol_untuk_ubah_kondisi }}</button>
-    <button data-testid="bookItemDeleteButton">{{ tombol_untuk_hapus }}</button>
-    <button data-testid="bookItemEditButton">{{ tombol_untuk_edit }}</button>
-  </div>
-</div>
 
 ###Cara Menjalankan Proyek
 Clone repository ini ke dalam komputer Anda
@@ -70,3 +57,17 @@ Proyek ini dilisensikan di bawah MIT License.
 
 ###Kontak
 Jika ada pertanyaan atau saran, jangan ragu untuk menghubungi kami melalui GitHub Issues.
+
+Agar pengerjaan tugas lebih mudah, Anda dapat mengikuti template buku berikut.
+
+```html
+<div data-bookid="{{ ID_buku }}" data-testid="bookItem">
+  <h3 data-testid="bookItemTitle">{{ judul_buku }}</h3>
+  <p data-testid="bookItemAuthor">Penulis: {{ penulis_buku }}</p>
+  <p data-testid="bookItemYear">Tahun: {{ tahun_rilis_buku }}</p>
+  <div>
+    <button data-testid="bookItemIsCompleteButton">{{ tombol_untuk_ubah_kondisi }}</button>
+    <button data-testid="bookItemDeleteButton">{{ tombol_untuk_hapus }}</button>
+    <button data-testid="bookItemEditButton">{{ tombol_untuk_edit }}</button>
+  </div>
+</div>
