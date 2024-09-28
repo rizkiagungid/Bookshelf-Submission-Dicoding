@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <style>
+      /* Styles untuk body */
+      body {
+        background: url('https://www.transparenttextures.com/patterns/batthern.png');
+        background-color: #f3f4f6;
+        font-family: Arial, sans-serif;
+      }
+    
+      /* Animasi Fade-in */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      /* Animasi Slide-up */
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      /* Styles untuk header */
+      header {
+        background: linear-gradient(to right, #1a1a1a, #6b6e72);
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+    
+      h1 {
+        font-size: 36px;
+        margin: 0;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    
+      /* Styles untuk form */
+      form {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 50px;
+        background-color: rgba(249, 249, 249, 0.8);
+        border: 1px solid rgba(204, 204, 204, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 1s ease-out;
+      }
+    
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+    
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 25px;
+        transition: border-color 0.3s ease;
+      }
+    
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border-color: #1a73e8;
+        outline: none;
+      }
+    
+      button[type="submit"],
+      button[type="button"] {
+        background-color: #333;
+        color: #fff;
+        padding: 15px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+    
+      button[type="submit"]:hover,
+      button[type="button"]:hover {
+        background-color: #555;
+        transform: scale(1.05);
+      }
+    
+      /* Styles untuk section */
+      section {
+        background-color: rgba(249, 249, 249, 0.8);
+        padding: 30px;
+        margin: 20px auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 1s ease-out;
+      }
+    
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+    
+      /* Styles untuk daftar buku */
+      #incompleteBookList,
+      #completeBookList {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(221, 221, 221, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+      }
+    
+      .bookItem {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(221, 221, 221, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: slideUp 0.5s ease-out;
+      }
+    
+      .bookItemTitle {
+        font-size: 18px;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+    
+      .bookItemAuthor,
+      .bookItemYear {
+        font-size: 14px;
+        color: #666;
+        margin: 5px 0;
+      }
+    
+      .buttonContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+      }
+    
+      /* Styles untuk tombol di dalam bookItem */
+      .buttonContainer button[type="button"] {
+        padding: 10px;
+        font-size: 14px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+    
+      .buttonContainer button[type="button"]:hover {
+        background-color: #555;
+        transform: translateY(-2px);
+      }
+    
+      /* Styles untuk notifikasi */
+      .notification {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        font-size: 14px;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Impor script kamu di sini -->
+    <!-- Lampirkan `defer` jika pemanggilan dilakukan dalam <head> -->
+    <script defer src="main.js"></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Meminta nama pengguna saat pertama kali halaman dimuat
+        let userName = localStorage.getItem('userName');
+        if (!userName) {
+          userName = prompt("Selamat datang! Siapa nama Anda?");
+          if (userName) {
+            localStorage.setItem('userName', userName);
+          } else {
+            userName = "Pengguna";
+          }
+        }
+        
+        // Mengubah header dengan nama pengguna
+        const headerElement = document.querySelector('header h1');
+        headerElement.textContent = `Bookshelf App - Selamat datang, ${userName}`;
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Bookshelf App</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Tambah Buku Baru</h2>
+        <form id="bookForm" data-testid="bookForm">
+          <div>
+            <label for="bookFormTitle">Judul</label>
+            <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
+          </div>
+          <div>
+            <label for="bookFormAuthor">Penulis</label>
+            <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
+          </div>
+          <div>
+            <label for="bookFormYear">Tahun</label>
+            <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
+          </div>
+          <div>
+            <label for="bookFormIsComplete">Selesai dibaca</label>
+            <input
+              id="bookFormIsComplete"
+              type="checkbox"
+              data-testid="bookFormIsCompleteCheckbox"
+            />
+          </div>
+          <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
+            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Cari Buku</h2>
+        <form id="searchBook" data-testid="searchBookForm">
+          <label for="searchBookTitle">Judul</label>
+          <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
+          <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
+            Cari
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Belum selesai dibaca</h2>
+        <div id="incompleteBookList" data-testid="incompleteBookList">
+          <!-- Buku akan ditampilkan di sini -->
+        </div>
+      </section>
+
+      <section>
+        <h2>Selesai dibaca</h2>
+        <div id="completeBookList" data-testid="completeBookList">
+          <!-- Buku akan ditampilkan di sini -->
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
